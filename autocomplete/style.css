@@ -1,0 +1,25 @@
+
+.list{
+	position: relative;
+}
+
+#container{
+	display: none;
+	position: absolute;
+	border: 1px solid grey;
+	top: 32px;
+	left: 8px;
+	width: 172px;
+	box-sizing: border-box;
+}
+#container span{
+	display: block;
+	font-size: 18px;
+	padding: 5px;
+}
+
+#container span:hover{
+	background: gray;
+	color:white;
+	cursor:pointer;
+}

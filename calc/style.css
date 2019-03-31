@@ -1,0 +1,58 @@
+.calc{
+		border:1px solid grey;
+		width: 345px;
+		background: rgba(193, 191, 191, 0.22);
+		height: 325px;
+		margin: 0 auto;
+	}
+	.form{
+		width: 300px;
+		margin: 0 auto;
+
+	}
+	button{
+		width: 70px;
+		height: 40px;
+		cursor:pointer;
+	}
+	.last{
+		width:83px;
+		float: right;
+		margin-top: 20px;
+		background: green;
+		color:#fff;
+		text-decoration: none;
+		text-align: center;
+		padding: 10px 20px;
+		cursor:pointer;
+	}
+	.box{
+		margin-top: 20px;
+		width:292px;
+		margin: 0 auto;
+		margin-top: 20px;
+	}
+	button:active{
+		background: rgba(193, 191, 191, 0.22);
+		border: black;
+		outline: black;
+	}
+	.desk{
+		width: 270px;
+		height: 30px;
+		padding-top: 10px;
+		margin-bottom: 20px;
+		background: #fff;
+		border: 1px solid gray;
+		text-align:right;
+		padding-right: 20px;
+		margin: 0 auto;
+	}
+	input[type="submit"]{
+		width: 100px;
+		height: 40px;
+		display: block;
+		margin-right: 8px;
+		margin-top: 20px;
+		float: right;
+	}
