@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+
+	h1{
+		text-decoration: underline;
+	}
+
+	#list{
+		width: 20%;
+	}
+
+	#list li{
+		position: relative;
+		padding: 10px;
+	}
+
+	#list li span:after{
+		position: absolute;
+		font-family: arial;
+		font-size: 15px;
+		font-weight: bolder;
+		right: 10px;
+		content: 'x';
+		cursor: pointer;
+	}
+
+</style>
+</head>
+
+<body>
+
+	<h1>To do list:</h1>
+	<ol id="list"></ol>
+
+	<input type="text" id="task">
+	<button id="button">Добавить задачу</button>
+
+	<script>
+		window.onload = function(){
+
+
+			var btn = document.querySelector('#button'),
+				task = document.querySelector('#task'),
+				list = document.querySelector('#list');
+
+			btn.onclick = addLi;
+
+			task.onkeydown = function(e) {
+				if(e.keyCode == 13 && task.value != '') {
+					addLi();
+				}
+			}
+
+			function addLi(){
+
+				if(task.value) {
+
+					var newLi = document.createElement('li'),
+					span = document.createElement('span');
+					span.classList.add('remove');
+					newLi.innerHTML = task.value;
+					newLi.setAttribute('data-list', task.value);
+					newLi.appendChild(span);
+					span.onclick = remove;
+					list.appendChild(newLi);
+
+					localStorage.setItem(task.value, task.value);
+					task.value = '';
+
+				}
+
+			}
+
+			function remove() {
+				this.parentElement.remove();
+				localStorage.removeItem(this.parentElement.getAttribute('data-list'));
+			}
+
+
+			if(localStorage != ''){
+				for(var key in localStorage){
+
+					if(key === 'length') return false;
+
+					var localLi = document.createElement('li'),
+						localSpan = document.createElement('span');
+
+					localSpan.classList.add('remove');
+					localLi.setAttribute('data-list', localStorage[key]);
+					localLi.innerHTML = localStorage[key];
+					localLi.appendChild(localSpan);
+					list.appendChild(localLi);
+					localSpan.onclick = remove;
+				}
+
+			}
+
+		}
+	</script>
+</body>
+</html>
