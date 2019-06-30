@@ -23,6 +23,7 @@
  		if(newArr[i].indexOf(list.value.toLowerCase()) !== -1){
  			container.style.display = "block";
  			var span = document.createElement("span");
+ 			span.addEventListener('mousedown', addSpan);
  			container.appendChild(span).innerText = listDefault[i];
 
  		}
@@ -41,6 +42,7 @@
  		for (var i = 0; i < listDefault.length; i++) {
 
  			var span = document.createElement("span");
+ 				span.addEventListener('mousedown', addSpan);
  			container.appendChild(span).innerText = listDefault[i];
 
  		}
@@ -56,11 +58,17 @@
  }
 
 
+
 //Unfocus input
- var inblur = function(){
+ var onfocus = function(){
  	container.innerHTML = "";
  	container.style.display = "none";
  }
+
+ function addSpan() {
+	list.value = this.innerHTML;
+	onfocus();
+}
 
 //KeyUp
  var inkeyup = function (){
@@ -71,7 +79,7 @@
 
 
  list.addEventListener("focus", infocus);
- list.addEventListener("blur", inblur);
+ list.addEventListener("blur", onfocus);
  list.addEventListener("keyup", inkeyup);
 
 
