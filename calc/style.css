@@ -16,7 +16,7 @@
 		cursor:pointer;
 	}
 	.last{
-		width:83px;
+		width:100px;
 		float: right;
 		margin-top: 20px;
 		background: green;
@@ -25,6 +25,9 @@
 		text-align: center;
 		padding: 10px 20px;
 		cursor:pointer;
+		outline: none;
+		border: none;
+		font-size: 18px
 	}
 	.box{
 		margin-top: 20px;
@@ -56,3 +59,4 @@
 		margin-top: 20px;
 		float: right;
 	}
+
