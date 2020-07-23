@@ -4,62 +4,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="UTF-8">
 	<title>Document</title>
+	<link rel="stylesheet" href="style.css">
 </head>
-<style>
-
-#game{
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-}
-
-#game1 div{
-	display: flex;
-}
-#game1 span{
-	width: 50px;
-	height: 50px;
-	border: 1px solid black;
-	cursor: pointer;
-
-	font-size: 50px;
-	text-align: center;
-	line-height: 50px;
-	font-family: arial;
-}
-
-button{
-	margin: 0 auto;
-	margin-top: 10px;
-	width: 100px;
-	height: 30px;
-	background: #000;
-	color:white;
-	text-transform: uppercase;
-	border: none;
-	cursor: pointer;
-	display: block;
-
-}
-button:hover{
-	border: 2px dotted gray;
-}
-
-h1{
-	text-align: center;
-	text-transform: uppercase;
-}
-
-
-</style>
-
 <body>
 	<h1>Крестики - нолики</h1>
 
-
 	<div id="game">
-
 		<div id="game1">
 			<div>
 				<span></span>
@@ -80,133 +30,6 @@ h1{
 		<button>Заново</button>
 	</div>
 
-
-
-
-	<script>
-		var a = 0,
-			operation = 0,
-			btn = document.querySelectorAll('span'),
-			reload = document.querySelector('button'),
-			game1 = document.querySelector('#game1'),
-
-			win = [
-			[1, 2, 3],
-			[4, 5, 6],
-			[7, 8, 9],
-			[1, 5, 9],
-			[3, 5, 7],
-			[1, 4, 7],
-			[2, 5, 8],
-			[3, 6, 9],
-			],
-
-			x = [],
-			o = [];
-
-
-
-		for (var i = 0; i < btn.length; i++) {
-			btn[i].addEventListener('click', game);
-			btn[i].setAttribute('data-c', [i+1]);
-		}
-
-
-
-		function game() {
-
-			operation++;
-
-			if(this.innerHTML == ''){
-				if(a){
-
-					this.innerHTML = "O";
-					o.push(+this.getAttribute('data-c'));
-
-					if(o.length > 2) {
-						result(o, 'O');
-					}
-
-					a = 0;
-
-				} else{
-
-					this.innerHTML = 'X';
-					this.style.background = "gray";
-					x.push(+this.getAttribute('data-c'));
-
-					if(x.length > 2) {
-						result(x, 'X');
-					}
-
-					a = 1;
-
-				}
-
-			}
-
-
-
-		}/*END GAME*/
-
-
-
-		function result(num, name) {
-
-			var sum = 0;
-
-			for (var i = 0; i < win.length; i++) {
-
-				for (var j = 0; j < win[i].length; j++) {
-					for (var a = 0; a < num.length; a++) {
-						if(num[a] == win[i][j]){
-							sum++;
-						}
-					}
-				}
-
-				if(sum == 3) {
-					number(name);
-					return;
-				} else {
-					sum = 0;
-				}
-
-			}
-
-			if(operation == 9) {
-				alert('Draw');
-				game1.style.pointerEvents = 'none';
-				reload.style.display = 'block';
-			}
-
-
-		}/*END RESULT*/
-
-
-
-		function number(winner){
-			alert(`Player ${winner} is win`);
-			game1.style.pointerEvents = 'none';
-		}
-
-
-		reload.addEventListener('click', function(){
-			for (var i = 0; i < btn.length; i++) {
-				btn[i].innerHTML = "";
-				btn[i].removeAttribute("style");
-			}
-
-			x = [];
-			o = [];
-			a = 0;
-			operation = 0;
-			game1.style.pointerEvents = 'auto';
-		});
-
-
-	</script>
-
-	<script src="one.js"></script>
+	<script src="common.js"></script>
 </body>
 </html>

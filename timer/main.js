@@ -1,9 +1,7 @@
 var myTimer = document.getElementById('timer'),
-hour = myTimer.querySelector('.hour'),
-minutes = myTimer.querySelector('.minutes'),
-seconds = myTimer.querySelector('.seconds');
-
-
+	hour = myTimer.querySelector('.hour'),
+	minutes = myTimer.querySelector('.minutes'),
+	seconds = myTimer.querySelector('.seconds');
 
 function timer(h, m, s) {
 	tHour = +h;
@@ -27,8 +25,6 @@ function timer(h, m, s) {
 	}  else{
 		seconds.innerHTML = tSeconds;
 	}
-
-
 
 	var myTimer = setInterval(function() {
 
@@ -67,13 +63,7 @@ function timer(h, m, s) {
 		} else {
 			seconds.innerHTML = tSeconds;
 		}
-
-
-
-
 	}, 1000);
-
-
 }
 
 timer(1, 1, 1);

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body {
+			overflow: hidden;
+			margin: 0;
+		}
+
+		.baraban {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin: -256px;
+		}
+		.pin {
+			position: absolute;
+			top: 212px;
+			right: -80px;
+			transform: rotate(96deg);
+		}
+
+		button {
+			background: cyan;
+			color:;
+			border: none;
+			padding: 20px;
+			text-transform: uppercase;
+			font-weight: bold;
+			position: absolute;
+			bottom: 10%;
+			right: 10%;
+			outline: none;
+			cursor: pointer;
+			box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5)
+		}
+
+		button.active {
+			box-shadow: none;
+		}
+
+		.score {
+			position: absolute;
+			right: 10%;
+			top: 10%;
+
+			width: 230px;
+		}
+
+		.score span {
+			font-size: 30px;
+			text-align: center;
+			display: -webkit-flex;
+			display: -moz-flex;
+			display: -ms-flex;
+			display: -o-flex;
+			display: flex;
+			justify-content: center;
+		}
+
+		.baraban_item {
+			transform: rotate(0deg);
+		}
+
+	</style>
+</head>
+<body>
+
+
+
+	<div class="baraban">
+		<img src="one.png" alt="Барабан" width="512" height="512" class="baraban_item">
+		<img src="pin.png" alt="Пин" width="96" height="96" class="pin">
+	</div>
+	<div class="score">
+		<h1>Ваш выигрыш:</h1>
+		<span></span>
+	</div>
+
+	<button>Крутить барабан</button>
+
+	<script>
+		let img = document.querySelector('.baraban_item'),
+		btn = document.querySelector('button'),
+		span = document.querySelector('.score span');
+		timerNum = 0;
+
+		btn.addEventListener('click', function() {
+
+			let timer = setInterval(() => {
+
+				img.style.transform = `rotate(${timerNum}deg)`;
+
+				if(timerNum >= 360) {
+					timerNum = 0;
+				}
+
+				timerNum+=1;
+
+				this.setAttribute('disabled', 'disabled');
+
+			}, randomInteger(0.1, 0.3));
+
+			setTimeout(function() {
+				clearInterval(timer);
+				btn.removeAttribute('disabled');
+				score(timerNum);
+			}, 5000);
+
+		});
+
+		function randomInteger(min, max) {
+			let rand = min - 0.5 + Math.random() * (max-min +1);
+
+			return Math.round(rand);
+		}
+
+		function score(score) {
+
+			if((score >= 0 && score <=10) || score >=349) {
+				span.innerHTML = 'фигушки';
+			} else if(score >= 11 && score <= 33) {
+				span.innerHTML = 1000;
+			} else if(score >= 34 && score <= 55) {
+				span.innerHTML = 100;
+			} else if(score >= 56 && score <= 78) {
+				span.innerHTML = 'x2';
+			} else if(score >= 79 && score <= 100) {
+				span.innerHTML =600;
+			} else if(score >= 101 && score <= 123) {
+				span.innerHTML = 800;
+			} else if(score >= 124 && score <= 145) {
+				span.innerHTML = '+1';
+			} else if(score >= 146 && score <= 168) {
+				span.innerHTML = 400;
+			} else if(score >= 169 && score <= 190) {
+				span.innerHTML = 900;
+			} else if(score >= 191 && score <= 213) {
+				span.innerHTML = 0;
+			} else if(score >= 214 && score <= 235) {
+				span.innerHTML = 'Приз';
+			} else if(score >= 236 && score <= 258) {
+				span.innerHTML = 500;
+			} else if(score >= 259 && score <= 280) {
+				span.innerHTML = 300;
+			} else if(score >= 289 && score <= 303) {
+				span.innerHTML = 200;
+			} else if(score >= 304 && score <= 325) {
+				span.innerHTML = 'x3';
+			} else {
+				span.innerHTML = 700;
+			}
+
+		}
+
+	</script>
+
+</body>
+</html>

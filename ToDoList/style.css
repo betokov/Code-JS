@@ -1,0 +1,22 @@
+h1{
+    text-decoration: underline;
+}
+
+#list{
+    width: 20%;
+}
+
+#list li{
+    position: relative;
+    padding: 10px;
+}
+
+#list li span:after{
+    position: absolute;
+    font-family: arial;
+    font-size: 15px;
+    font-weight: bolder;
+    right: 10px;
+    content: 'x';
+    cursor: pointer;
+}

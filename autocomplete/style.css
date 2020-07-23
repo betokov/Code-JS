@@ -1,9 +1,8 @@
-
-.list{
+.autocomplete {
 	position: relative;
 }
 
-#container{
+.autocomplete-down {
 	display: none;
 	position: absolute;
 	border: 1px solid grey;
@@ -12,13 +11,14 @@
 	width: 172px;
 	box-sizing: border-box;
 }
-#container span{
+
+.autocomplete-down span{
 	display: block;
 	font-size: 18px;
 	padding: 5px;
 }
 
-#container span:hover{
+.autocomplete-down span:hover{
 	background: gray;
 	color:white;
 	cursor:pointer;

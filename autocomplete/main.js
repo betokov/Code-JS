@@ -1,88 +1,76 @@
- /*
-    ****Autocomplete***
- */
-
- var list = document.getElementById("list"),
- listDefault =  ['Африка', 'Бразилия', 'Великобритания', 'Велинктон', 'Греция', 'Дания'],
- div = document.createElement("div"),
- span = document.createElement("span");
-
+/*
+   ****Autocomplete***
+*/
+let autocomplete = document.querySelector('.autocomplete'),
+    listDefault = ['Африка', 'Бразилия', 'Великобритания', 'Велинктон', 'Греция', 'Дания'],
+    div = document.createElement("div"),
+    span = document.createElement("span");
 
 //Search elements in array
- var search = function() {
+var search = function () {
+    document.body.appendChild(div).classList.add('autocomplete-down');
+	let autocompleteDown = document.querySelector('.autocomplete-down');
 
- 	container.style.display = "none";
- 	container.innerHTML = "";
+	autocompleteDown.style.display = "none";
+    autocompleteDown.innerHTML = "";
 
- 	var newArr = [];
+    var newArr = [];
 
- 	for (var i = 0; i < listDefault.length; i++) {
+    for (var i = 0; i < listDefault.length; i++) {
 
- 		newArr.push(listDefault[i].toLowerCase());
+        newArr.push(listDefault[i].toLowerCase());
 
- 		if(newArr[i].indexOf(list.value.toLowerCase()) !== -1){
- 			container.style.display = "block";
- 			var span = document.createElement("span");
- 			span.addEventListener('mousedown', addSpan);
- 			container.appendChild(span).innerText = listDefault[i];
+        if (newArr[i].indexOf(autocomplete.value.toLowerCase()) !== -1) {
+			autocompleteDown.style.display = "block";
+            var span = document.createElement("span");
+            span.addEventListener('mousedown', addSpan);
+            autocompleteDown.appendChild(span).innerText = listDefault[i];
+        }
 
- 		}
-
- 	}
- }
-
+    }
+}
 
 //Focus input
- var infocus = function (){
+var infocus = function () {
 
- 	document.body.appendChild(div).setAttribute("id", "container");
+   document.body.appendChild(div).classList.add('autocomplete-down');
+	let autocompleteDown = document.querySelector('.autocomplete-down');
 
- 	if(list.value == ''){
+	if (autocomplete.value == '') {
 
- 		for (var i = 0; i < listDefault.length; i++) {
+        for (var i = 0; i < listDefault.length; i++) {
 
- 			var span = document.createElement("span");
- 				span.addEventListener('mousedown', addSpan);
- 			container.appendChild(span).innerText = listDefault[i];
+            var span = document.createElement("span");
+            span.addEventListener('mousedown', addSpan);
+            autocompleteDown.appendChild(span).innerText = listDefault[i];
 
- 		}
+        }
 
- 		container.style.display = "block";
+        autocompleteDown.style.display = "block";
 
- 	} else {
+    } else {
+        search();
+    }
 
- 		search();
-
- 	}
-
- }
-
-
+}
 
 //Unfocus input
- var onfocus = function(){
- 	container.innerHTML = "";
- 	container.style.display = "none";
- }
+var onfocus = function () {
+	let autocompleteDown = document.querySelector('.autocomplete-down');
+		autocompleteDown.innerHTML = "";
+    	autocompleteDown.style.display = "none";
+}
 
- function addSpan() {
-	list.value = this.innerHTML;
-	onfocus();
+function addSpan() {
+    autocomplete.value = this.innerHTML;
+    onfocus();
 }
 
 //KeyUp
- var inkeyup = function (){
- 	search();
- }
+var inkeyup = function () {
+    search();
+}
 
-
-
-
- list.addEventListener("focus", infocus);
- list.addEventListener("blur", onfocus);
- list.addEventListener("keyup", inkeyup);
-
-
-
-
-
+autocomplete.addEventListener("focus", infocus);
+autocomplete.addEventListener("blur", onfocus);
+autocomplete.addEventListener("keyup", inkeyup);
